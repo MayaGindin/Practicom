@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>
+            Prediction
+        </title>
+        <%- include('./common/head'); %>
+    </head>
+    <body>
+        <header>
+            <%- include('./common/header'); %>
+        </header>
+        
+        <div class="container">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Month</th>
+                    <th scope="col">Prediction</th>
+                  </tr>
+                </thead>
+                <tbody id="data">
+                </tbody>
+              </table>
+        </div>
+
+
+        <%- include('./common/footer'); %>
+    </body>
+    <script>
+        $(document).ready(() => {
+            $.post("/order/prediction")
+            .then((res) => {
+                if (res.result_code == 'success')
+                {
+                    let html = '';
+                    for (data of res.result_data)
+                    {
+                        html += `<tr>
+                                    <td>${data.month}</td>
+                                    <td>${data.prediction}</td>
+                                </tr>`;
+                    }
+                    $('#data').html(html);
+                }
+                else if (res.result_code == 'error')
+                {
+                    alert(res.result_msg);
+                }
+            });
+        })
+    </script>
+</html>

@@ -1,0 +1,266 @@
+<html>
+
+<head>
+    <title>
+        Orders
+    </title>
+    <%- include('./common/head'); %>
+</head>
+
+<body>
+    <header>
+        <%- include('./common/header'); %>
+    </header>
+    <div class="container mt-2">
+        <button
+            data-tooltip="להוספת הזמנה חדשה יש ללחוץ על הכפתור, למלא את כל הפרטים הרלוונטים עבור ההזמנה וללחוץ הוספה "
+            class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Order
+        </button>
+
+        <table id="orderTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Factory</th>
+                    <th scope="col">Shipper</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="javascript:onValidate()" method="post" id="orderForm">
+                        <label for="title" class="sr-only">Title</label>
+                        <input type="text" id="title" class="form-control" placeholder="Title" required="">
+
+                        <label for="description" class="mt-2">Description</label>
+                        <textarea id="description" form="orderForm" class="form-control" required=""></textarea>
+
+                        <label for="quantity" class="mt-2">Quantity</label>
+                        <input type="number" id="quantity" class="form-control" placeholder="Quantity" required="">
+
+                        <label for="date" class="mt-2">Order Date</label>
+                        <input type="date" id="date" class="form-control" required="">
+
+                        <label for="address" class="mt-2">Address</label>
+                        <input type="text" id="address" class="form-control" value="Los Angeles, United States"
+                            disabled="true" required="">
+
+                        <label for="price" class="mt-2">Price</label>
+                        <input type="number" id="price" class="form-control" placeholder="price" required="">
+
+                        <label for="factory" class="mt-2">Factory</label>
+                        <select class="form-select" aria-label="Default select example" id="factory">
+
+                        </select>
+
+                        <label for="shpipper" class="mt-2">Shipper</label>
+                        <select class="form-select" aria-label="Default select example" id="shipper">
+
+                        </select>
+                        <div class="modal-footer" style="padding:0px">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="updateModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="updateId" />
+                    <label for="shpipper" class="mt-1">Status</label>
+                    <select class="form-select" aria-label="Default select example" id="status">
+                        <option value="In production" selected>In production</option>
+                        <option value="Picked up by Shipper">Picked up by Shipper</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Ready To Pick Up">Ready To Pick Up</option>
+                        <option value="On The Way">On The Way</option>
+                    </select>
+                </div>
+                <div class="modal-footer" style="padding:0px">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnUpdate">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('./common/footer'); %>
+</body>
+<script>
+    $(document).ready(function () {
+        $.post('/factory/list')
+            .then((res) => {
+                if (res.result_code == 'success') {
+                    let html = '';
+                    let count = 0;
+
+                    for (factory of res.result_data) {
+                        html += `
+                            <option value="${factory._id}" ${count ? '' : 'selected'}>${factory.name}</option>
+                        `;
+                        count++;
+                    }
+
+                    $('#factory').html(html);
+                }
+                else {
+                    alert('Failed to load Factory Info.');
+                }
+            })
+
+        $.post('/shipper/list')
+            .then((res) => {
+                if (res.result_code == 'success') {
+                    let html = '';
+                    let count = 0;
+
+                    for (shipper of res.result_data) {
+                        html += `
+                            <option value="${shipper._id}" ${count ? '' : 'selected'}>${shipper.name}</option>
+                        `;
+
+                        count++;
+                    }
+
+                    $('#shipper').html(html);
+                }
+                else {
+                    alert('Failed to load Shipper Info.');
+                }
+            })
+
+        var table = $('#orderTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                type: 'GET',
+                url: "/datatable/order",
+                data: {
+
+                }
+            },
+            ordering: false,
+            columns: [
+                {
+                    data: '_id', name: 'id',
+                    render: (data, type, row, meta) => meta.row + 1
+                },
+                { data: 'item_title', name: 'item_title' },
+                { data: 'item_description', name: 'item_description' },
+                { data: 'quantity', name: 'quantity' },
+                {
+                    data: 'order_date', name: 'order_date',
+                    render: (data) => {
+                        let date = new Date(data);
+                        return date.getFullYear() + "-" +
+                            (date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) + '-' +
+                            (date.getDate() < 10 ? '0' : '') + date.getDate()
+                    }
+                },
+                { data: 'address', name: 'address' },
+                { data: 'price', name: 'price' },
+                {
+                    data: 'factory', name: 'factory',
+                    render: (data) => data[0].name
+                },
+                {
+                    data: 'shipper', name: 'shipper',
+                    render: (data) => data[0].name
+                },
+                { data: 'status', name: 'status' },
+                {
+                    data: '_id', name: 'action',
+                    render: (data) => {
+                        return `<div class="btn btn-primary update" id="${data}" data-bs-toggle="modal" data-bs-target="#updateModal">Edit</div>`;
+                    }
+                },
+            ]
+        });
+
+    })
+
+    function onValidate() {
+        $.post('/order/add', {
+            item_title: $('#title').val(),
+            item_description: $('#description').val(),
+            quantity: $('#quantity').val(),
+            order_date: $('#date').val(),
+            address: $('#address').val(),
+            price: $('#price').val(),
+            factory_id: $('#factory').val(),
+            shipper_id: $('#shipper').val(),
+            client_email: $('#client').val()
+        })
+            .then((res) => {
+                if (res.result_code == 'success') {
+                    alert("Successfully added.");
+                    $('#orderTable').DataTable().ajax.reload();
+
+                    $('#exampleModal').modal('hide'); // 모달 닫기
+                    $('body').removeClass('modal-open'); // .modal-open 클래스 제거
+                    $('.modal-backdrop').remove(); // .modal-backdrop 클래스 제거
+                }
+                else if (res.result_code == 'error') {
+                    alert(res.result_msg);
+                }
+            })
+    }
+    $('#orderTable').on('click', '.update', function (e) {
+        $('#updateId').val($(this).prop('id'));
+    })
+
+    $('#btnUpdate').click(() => {
+        $.post('/order/update', {
+            _id: $('#updateId').val(),
+            status: $('#status').val(),
+        })
+            .then((res) => {
+                if (res.result_code == 'success') {
+                    $('#orderTable').DataTable().ajax.reload();
+
+                    $('#updateModal').modal('hide'); // 모달 닫기
+                    $('body').removeClass('modal-open'); // .modal-open 클래스 제거
+                    $('.modal-backdrop').remove(); // .modal-backdrop 클래스 제거
+                }
+                else if (res.result_code == 'error') {
+                    alert(res.result_msg);
+                }
+            });
+    })
+</script>
+
+</html>

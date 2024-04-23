@@ -1,0 +1,21 @@
+[
+    {
+      "name": "Factory A",
+      "category": "Category A",
+      "email": "factoryA@example.com",
+      "phone": "123-456-7890"
+    },
+    {
+      "name": "Factory B",
+      "category": "Category B",
+      "email": "factoryB@example.com",
+      "phone": "555-123-4567"
+    },
+    {
+      "name": "Factory C",
+      "category": "Category C",
+      "email": "factoryC@example.com",
+      "phone": "999-888-7777"
+    }
+  ]
+  

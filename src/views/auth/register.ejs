@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <%- include('../common/head'); %>
+</head>
+<body>
+
+    <div id="loginContainer">
+        <form class="form-signin" action="javascript:onValidate()" method="post">
+            <div class="text-center">
+                <img style="width:50%" src="img/1.jfif"/>
+              </div>
+            <label for="inputName" class="sr-only">Name</label>
+            <input type="text" id="name" name="name" class="form-control"
+            placeholder="Name" required="">
+            <label for="inputEmail" class="mt-2">Email address</label>
+            <input type="email" id="email" name="email" class=
+            "form-control" placeholder="Email address" required="">
+            <label for="inputPassword" class="mt-2">Password</label>
+            <input type="password" id="password" name="password" 
+            class="form-control" placeholder="Password" required="">
+            <label for="inputPassword" class="mt-2">Confirm Password</label>
+            <input type="password" id="confirm_password" name="password" 
+            class="form-control" placeholder="Password" required="">
+            <div class="d-grid gap-1">
+                <button class="btn btn-lg btn-primary btn-block mt-2" type="submit" id="submit">Register</button> 
+            </div>
+            <br> 
+            <p class="text-center">Already have an account? Please <a href="/login">Login</a></p>
+        </form>
+    </div>
+    <script>
+        $('#confirm_password').keyup(() => {
+            validatePassword()
+        })
+
+        function validatePassword() {
+            if($('#password').val() != $('#confirm_password').val()) {
+                console.log('checking');
+                $('#confirm_password').get(0).setCustomValidity("Passwords Don't Match");
+            } else {
+                $('#confirm_password').get(0).setCustomValidity('');
+            }
+        }
+        function onValidate() {
+            $.post('/worker/register', {
+                username: $('#name').val(),
+                email: $('#email').val(),
+                password: $("#password").val(),
+            })
+            .then((res) => {
+                if (res.result_code == 'success')
+                {
+                    window.location.replace('/login');
+                }
+                else if (res.result_code == 'error')
+                {
+                    alert(res.result_msg);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

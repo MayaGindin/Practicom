@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>
+            Products
+        </title>
+        <%- include('./common/head'); %>
+    </head>
+    <body>
+        <header>
+            <%- include('./common/header'); %>
+        </header>
+        <div class="container mt-2">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add Product
+            </button>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:onValidate()" method="post">
+                        <label for="name" class="sr-only">Product Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
+                        <label for="name" class="mt-2">Category</label>
+                        <input type="text" id="category" name="category" class="form-control" placeholder="Category" required="">
+                        <label for="price" class="mt-2">Price</label>
+                        <input type="number" id="price" name="price" class="form-control" placeholder="" required="">
+                        <label for="width" class="mt-2">Width</label>
+                        <input type="number" id="width" name="width" class="form-control" placeholder="" required="">
+                        <label for="length" class="mt-2">Length</label>
+                        <input type="number" id="length" name="length" class="form-control" placeholder="" required="">
+                        <label for="height" class="mt-2">Height</label>
+                        <input type="number" id="height" name="height" class="form-control" placeholder="" required="">
+                        <label class="mt-2" for="customFile">Image</label>
+                        <input type="file" class="form-control" id="customFile" required=""/>
+                        
+                        <div class="modal-footer" style="padding:0px">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+
+        <%- include('./common/footer'); %>
+    </body>
+    <script>
+        function onValidate() {
+            alert('asd');
+        }
+    </script>
+</html>

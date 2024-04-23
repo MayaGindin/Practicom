@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <title>
+        Workers
+    </title>
+    <%- include('./common/head'); %>
+</head>
+
+<body>
+    <header>
+        <%- include('./common/header'); %>
+    </header>
+    <div class="container mt-2">
+        <button data-tooltip="על מנת להוסיף עובד - יש ללחוץ על הכפתור ולמלא את הפרטים הרלוונטים לאחר הלחיצה "
+            class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Worker
+        </button>
+
+        <table id="userTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th title="id" scope="col">ID</th>
+                    <th scope="col">Name </th>
+                    <th scope="col">Email </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Worker</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="javascript:onValidate()" method="post">
+                        <label for="inputName" class="sr-only">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
+                        <label for="inputEmail" class="mt-2">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email address"
+                            required="">
+                        <label for="inputPassword" class="mt-2">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                            required="">
+                        <label for="inputPassword" class="mt-2">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="password" class="form-control"
+                            placeholder="Password" required="">
+
+                        <div class="modal-footer" style="padding:0px">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('./common/footer'); %>
+</body>
+<script>
+    $(document).ready(function () {
+
+
+        var table = $('#userTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: false,
+            ajax: {
+                type: 'GET',
+                url: "/datatable/worker",
+                data: {
+
+                }
+            },
+            columns: [
+                {
+                    data: '_id', name: 'id',
+                    render: (data, type, row, meta) => meta.row + 1
+                },
+                { data: 'username', name: 'username' },
+                { data: 'email', name: 'email' },
+            ]
+        });
+
+    })
+
+    $('#confirm_password').keyup(() => {
+        validatePassword()
+    })
+
+    function validatePassword() {
+        if ($('#password').val() != $('#confirm_password').val()) {
+            console.log('checking');
+            $('#confirm_password').get(0).setCustomValidity("Passwords Don't Match");
+        } else {
+            $('#confirm_password').get(0).setCustomValidity('');
+        }
+    }
+
+    function onValidate() {
+        $.post('/worker/register', {
+            username: $('#name').val(),
+            email: $('#email').val(),
+            password: $("#password").val(),
+        })
+            .then((res) => {
+                if (res.result_code == 'success') {
+                    $('#userTable').DataTable().ajax.reload();
+
+                    $('#exampleModal').modal('hide'); // 모달 닫기
+                    $('body').removeClass('modal-open'); // .modal-open 클래스 제거
+                    $('.modal-backdrop').remove(); // .modal-backdrop 클래스 제거
+                }
+                else if (res.result_code == 'error') {
+                    alert(res.result_msg);
+                }
+            })
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Shipper X",
+    "email": "shipperX@example.com",
+    "phone": "987-654-3210"
+  },
+  {
+    "name": "Shipper Y",
+    "email": "shipperY@example.com",
+    "phone": "222-333-4444"
+  },
+  {
+    "name": "Shipper Z",
+    "email": "shipperZ@example.com",
+    "phone": "111-222-3333"
+  }
+]

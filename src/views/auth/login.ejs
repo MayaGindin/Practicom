@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login</title>
+  <%- include('../common/head'); %>
+</head>
+
+<body>
+  <div id="loginContainer">
+    <form method="post" id="loginForm" action="javascript:onSubmit();">
+      <div class="text-center">
+        <img style="width:50%" src="img/1.jfif" />
+      </div>
+
+      <label for="inputEmail">Email address</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required="">
+
+      <label for="inputPassword" class="mt-2">Password</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+
+      <div class="d-grid gap-1">
+        <button class="btn btn-lg btn-primary btn-block mt-2" type="submit" id="submit">Sign in</button>
+      </div>
+
+      <br>
+      <p class="text-center">Don't have an account? Please <a href="/register">Register</a></p>
+    </form>
+  </div>
+  <script>
+    function onSubmit() {
+      $.post('/worker/login', {
+        email: $('#email').val(),
+        password: $("#password").val(),
+      })
+        .then((res) => {
+          if (res.result_code == 'success') {
+            window.location.replace('/report');
+          }
+          else if (res.result_code == 'error') {
+            alert(res.result_msg);
+          }
+        })
+    }
+  </script>
+
+</body>
+
+</html>

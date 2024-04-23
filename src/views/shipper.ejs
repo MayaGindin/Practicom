@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>
+        Shippers
+    </title>
+    <%- include('./common/head'); %>
+</head>
+
+<body>
+    <header>
+        <%- include('./common/header'); %>
+    </header>
+    <div class="container mt-2">
+        <button data-tooltip=" כדי להוסיף משלח יש ללחוץ על הכפתור, למלא את הטופס בפרטים הרלוונטים וללחוץ הוספה"
+            class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Shipper
+        </button>
+
+        <table id="shipperTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name </th>
+                    <th scope="col">Email </th>
+                    <th scope="col">Phone </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Shipper</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="javascript:onValidate()" method="post">
+                        <label for="inputName" class="sr-only">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
+                        <label for="inputEmail" class="mt-2">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email address"
+                            required="">
+                        <label for="inputPassword" class="mt-2">Phone</label>
+                        <input type="phone" id="phone" name="phone" class="form-control" placeholder="phone"
+                            required="">
+
+                        <div class="modal-footer" style="padding:0px">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('./common/footer'); %>
+</body>
+<script>
+    $(document).ready(function () {
+
+
+        var table = $('#shipperTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: false,
+            ajax: {
+                type: 'GET',
+                url: "/datatable/shipper",
+                data: {
+
+                }
+            },
+            columns: [
+                {
+                    data: '_id', name: 'id',
+                    render: (data, type, row, meta) => meta.row + 1
+                },
+                { data: 'name', name: 'name' },
+                { data: 'email', name: 'email' },
+                { data: 'phone', name: 'phone' },
+            ]
+        });
+
+    })
+
+    function onValidate() {
+        $.post('/shipper/add', {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            phone: $("#phone").val(),
+        })
+            .then((res) => {
+                if (res.result_code == 'success') {
+                    $('#shipperTable').DataTable().ajax.reload();
+
+                    $('#exampleModal').modal('hide'); // 모달 닫기
+                    $('body').removeClass('modal-open'); // .modal-open 클래스 제거
+                    $('.modal-backdrop').remove(); // .modal-backdrop 클래스 제거
+                }
+                else if (res.result_code == 'error') {
+                    alert(res.result_msg);
+                }
+            })
+    }
+</script>
+
+</html>

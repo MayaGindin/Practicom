@@ -1,0 +1,602 @@
+[
+  {
+    "item_title": "Dog Toy",
+    "item_description": "Blue, Small Dog Toy",
+    "quantity": 347,
+    "order_date": "2020-05-10T09:00:00Z",
+    "address": "Los Angeles, United States",
+    "price": 3578,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Toys",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Food",
+    "item_description": "Red, Large Dog Food",
+    "quantity": 593,
+    "order_date": "2021-02-20T10:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 5462,
+    "status": "Picked up by Shipper",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Food",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Collar",
+    "item_description": "Green, Medium Dog Collar",
+    "quantity": 870,
+    "order_date": "2022-06-14T11:45:00Z",
+    "address": "Los Angeles, United States",
+    "price": 7231,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory C",
+        "category": "Dog Accessories",
+        "email": "factoryC@example.com",
+        "phone": "999-888-7777"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Z",
+        "email": "shipperZ@example.com",
+        "phone": "111-222-3333"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Bed",
+    "item_description": "Brown, Large Dog Bed",
+    "quantity": 505,
+    "order_date": "2023-03-10T13:15:00Z",
+    "address": "Los Angeles, United States",
+    "price": 4389,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Beds",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Leash",
+    "item_description": "Black, Medium Dog Leash",
+    "quantity": 245,
+    "order_date": "2023-05-12T15:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 2698,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Accessories",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Treats",
+    "item_description": "Yellow, Crunchy Dog Treats",
+    "quantity": 712,
+    "order_date": "2023-07-14T09:45:00Z",
+    "address": "Los Angeles, United States",
+    "price": 8354,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory C",
+        "category": "Dog Treats",
+        "email": "factoryC@example.com",
+        "phone": "999-888-7777"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Z",
+        "email": "shipperZ@example.com",
+        "phone": "111-222-3333"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Shampoo",
+    "item_description": "Purple, Fresh Scent Dog Shampoo",
+    "quantity": 157,
+    "order_date": "2023-09-08T11:15:00Z",
+    "address": "Los Angeles, United States",
+    "price": 1912,
+    "status": "Picked up by Shipper",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Grooming",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Sweater",
+    "item_description": "Pink, Small Dog Sweater",
+    "quantity": 421,
+    "order_date": "2023-11-04T13:45:00Z",
+    "address": "Los Angeles, United States",
+    "price": 3791,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Clothing",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Chew Toy",
+    "item_description": "Orange, Durable Dog Chew Toy",
+    "quantity": 899,
+    "order_date": "2023-12-20T16:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 9572,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory C",
+        "category": "Dog Toys",
+        "email": "factoryC@example.com",
+        "phone": "999-888-7777"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Z",
+        "email": "shipperZ@example.com",
+        "phone": "111-222-3333"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Treat Dispenser",
+    "item_description": "Green, Interactive Dog Treat Dispenser",
+    "quantity": 674,
+    "order_date": "2020-02-02T09:45:00Z",
+    "address": "Los Angeles, United States",
+    "price": 7854,
+    "status": "Picked up by Shipper",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Toys",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Training Pads",
+    "item_description": "Blue, Absorbent Dog Training Pads",
+    "quantity": 291,
+    "order_date": "2020-03-15T12:00:00Z",
+    "address": "Los Angeles, United States",
+    "price": 2781,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Training",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Nail Clippers",
+    "item_description": "Silver, Professional Dog Nail Clippers",
+    "quantity": 198,
+    "order_date": "2020-04-25T15:15:00Z",
+    "address": "Los Angeles, United States",
+    "price": 2375,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory C",
+        "category": "Dog Grooming",
+        "email": "factoryC@example.com",
+        "phone": "999-888-7777"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Z",
+        "email": "shipperZ@example.com",
+        "phone": "111-222-3333"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Raincoat",
+    "item_description": "Yellow, Waterproof Dog Raincoat",
+    "quantity": 368,
+    "order_date": "2020-06-08T17:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 4134,
+    "status": "Picked up by Shipper",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Clothing",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Dental Chews",
+    "item_description": "White, Dental Health Dog Chews",
+    "quantity": 453,
+    "order_date": "2021-07-20T09:45:00Z",
+    "address": "Los Angeles, United States",
+    "price": 5956,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Treats",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Carrier Bag",
+    "item_description": "Purple, Stylish Dog Carrier Bag",
+    "quantity": 195,
+    "order_date": "2021-09-30T12:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 8657,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory C",
+        "category": "Dog Accessories",
+        "email": "factoryC@example.com",
+        "phone": "999-888-7777"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Z",
+        "email": "shipperZ@example.com",
+        "phone": "111-222-3333"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Grooming Brush",
+    "item_description": "Pink, Detangling Dog Grooming Brush",
+    "quantity": 313,
+    "order_date": "2021-11-15T15:00:00Z",
+    "address": "Los Angeles, United States",
+    "price": 2105,
+    "status": "Picked up by Shipper",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Grooming",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Cooling Mat",
+    "item_description": "Blue, Cooling Gel Dog Mat",
+    "quantity": 477,
+    "order_date": "2021-12-25T17:15:00Z",
+    "address": "Los Angeles, United States",
+    "price": 9348,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Beds",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Bowls",
+    "item_description": "Set of Stainless Steel Dog Bowls",
+    "quantity": 295,
+    "order_date": "2022-02-05T09:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 1735,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory C",
+        "category": "Dog Accessories",
+        "email": "factoryC@example.com",
+        "phone": "999-888-7777"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Z",
+        "email": "shipperZ@example.com",
+        "phone": "111-222-3333"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Training Clicker",
+    "item_description": "Red, Clicker for Dog Training",
+    "quantity": 164,
+    "order_date": "2022-03-25T12:45:00Z",
+    "address": "Los Angeles, United States",
+    "price": 1992,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Training",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Harness",
+    "item_description": "Black, Adjustable Dog Harness",
+    "quantity": 404,
+    "order_date": "2022-05-10T15:00:00Z",
+    "address": "Los Angeles, United States",
+    "price": 4782,
+    "status": "Picked up by Shipper",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Accessories",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Dental Kit",
+    "item_description": "White, Dog Dental Care Kit",
+    "quantity": 239,
+    "order_date": "2022-06-25T17:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 3456,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Dental Care",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog GPS Tracker",
+    "item_description": "Black, GPS Tracker for Dogs",
+    "quantity": 389,
+    "order_date": "2022-08-15T09:45:00Z",
+    "address": "Los Angeles, United States",
+    "price": 7123,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Accessories",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Life Jacket",
+    "item_description": "Orange, Safety Dog Life Jacket",
+    "quantity": 176,
+    "order_date": "2022-09-30T12:30:00Z",
+    "address": "Los Angeles, United States",
+    "price": 4502,
+    "status": "Picked up by Shipper",
+    "factory": [
+      {
+        "name": "Factory C",
+        "category": "Dog Accessories",
+        "email": "factoryC@example.com",
+        "phone": "999-888-7777"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Z",
+        "email": "shipperZ@example.com",
+        "phone": "111-222-3333"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Paw Balm",
+    "item_description": "Yellow, Moisturizing Dog Paw Balm",
+    "quantity": 212,
+    "order_date": "2022-11-15T15:00:00Z",
+    "address": "Los Angeles, United States",
+    "price": 2801,
+    "status": "Delivered",
+    "factory": [
+      {
+        "name": "Factory A",
+        "category": "Dog Grooming",
+        "email": "factoryA@example.com",
+        "phone": "123-456-7890"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper X",
+        "email": "shipperX@example.com",
+        "phone": "987-654-3210"
+      }
+    ]
+  },
+  {
+    "item_title": "Dog Travel Bag",
+    "item_description": "Green, Dog Travel Bag with Accessories",
+    "quantity": 327,
+    "order_date": "2022-12-25T17:15:00Z",
+    "address": "Los Angeles, United States",
+    "price": 7865,
+    "status": "In production",
+    "factory": [
+      {
+        "name": "Factory B",
+        "category": "Dog Accessories",
+        "email": "factoryB@example.com",
+        "phone": "555-123-4567"
+      }
+    ],
+    "shipper": [
+      {
+        "name": "Shipper Y",
+        "email": "shipperY@example.com",
+        "phone": "222-333-4444"
+      }
+    ]
+  }
+]
